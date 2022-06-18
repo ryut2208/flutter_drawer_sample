@@ -57,6 +57,43 @@ class _MyHomePageState extends State<MyHomePage> {
           ],
         ),
       ),
+      drawer: Container(
+        color: Colors.white,
+        width: 200,
+        child: SafeArea(
+          child: ListView.separated(
+            itemBuilder: (context, index) {
+              return Container(
+                height: 40,
+                color: Color.fromARGB(
+                  0xFF,
+                  25 * index,
+                  0,
+                  0,
+                ),
+                child: Center(
+                  child: Text(
+                    '$index',
+                    style: const TextStyle(
+                      fontSize: 20,
+                      color: Colors.white,
+                    ),
+                  ),
+                ),
+              );
+            },
+            separatorBuilder: (context, index) {
+              if (index % 5 == 0) {
+                return const Divider(
+                  height: 5,
+                );
+              }
+              return const SizedBox.shrink();
+            },
+            itemCount: 10,
+          ),
+        ),
+      ),
       floatingActionButton: FloatingActionButton(
         onPressed: _incrementCounter,
         tooltip: 'Increment',
